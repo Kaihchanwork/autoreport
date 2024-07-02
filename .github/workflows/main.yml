@@ -2,7 +2,8 @@ name: Auto Report Workflow
 
 on:
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/5 * * * *"
+
 jobs:
   build:
     runs-on: ubuntu-latest
