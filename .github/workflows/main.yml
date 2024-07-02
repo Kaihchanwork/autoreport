@@ -36,6 +36,6 @@ jobs:
           OFFICE365_EMAIL: ${{ secrets.OFFICE365_EMAIL }}
           OFFICE365_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          RECEIVER_EMAILS: ${{ secrets.RECEIVER_EMAILS }}
         run: |
           python auto-report/main.py
