@@ -33,9 +33,9 @@ jobs:
           CDP_USER_SECRET: ${{ secrets.CDP_USER_SECRET }}
           CDP_BUSINESS_UNIT: ${{ secrets.CDP_BUSINESS_UNIT }}
           CDP_VIEW: ${{ secrets.CDP_VIEW }}
-          SMTP_USERNAME: ${{ secrets.OFFICE365_EMAIL }}
-          SMTP_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          RECEIVER_EMAILS: ${{ secrets.RECEIVER_EMAILS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: |
           python auto-report/main.py
