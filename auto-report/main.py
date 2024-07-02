@@ -2,6 +2,7 @@ import aiohttp
 import os
 import asyncio
 import json
+from datetime import datetime
 from dotenv import load_dotenv
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -158,7 +159,8 @@ async def run_report_and_send_email():
     # Send email with the report data
     sender_email = os.getenv('SENDER_EMAIL')
     receiver_email = os.getenv('RECIPIENT_EMAIL')
-    subject = 'Daily UC1 Report'
+    current_date = datetime.now().strftime('%Y-%m-%d')
+    subject = f'Daily UC1 Report - {current_date}'
     smtp_server = 'smtp.office365.com'
     smtp_port = 587
     smtp_username = os.getenv('SMTP_USERNAME')
