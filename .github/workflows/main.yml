@@ -1,0 +1,40 @@
+name: Daily Auto Report
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Runs at 8:00 AM UTC daily
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Replace with your Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Assuming aiohttp is in requirements.txt
+
+      - name: Run Python script
+        run: |
+          source venv/bin/activate  # Activate virtual environment if needed
+          python main.py  # Replace with your script name
+
+      - name: Send email
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: |
+          # Command to send email using your script or command line tool
+          python send_email_script.py  # Replace with your email sending script
+
