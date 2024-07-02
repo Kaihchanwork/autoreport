@@ -1,0 +1,3 @@
+aiohttp==3.8.1    # Example version specification for aiohttp
+asyncio==3.4.3    # Example version specification for asyncio
+requests==2.26.0  # Example version specification for requests
