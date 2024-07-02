@@ -2,7 +2,7 @@ name: Auto Report Workflow
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/5 * * * *"  # Runs every 5 minutes, adjust as needed
 
 jobs:
   run-report:
@@ -31,6 +31,4 @@ jobs:
           OFFICE365_EMAIL: ${{ secrets.OFFICE365_EMAIL }}
           OFFICE365_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
         run: |
-          python autoreport/auto-report/main.py  
-
-
+          python autoreport/auto-report/main.py
