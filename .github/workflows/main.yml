@@ -33,8 +33,8 @@ jobs:
           CDP_USER_SECRET: ${{ secrets.CDP_USER_SECRET }}
           CDP_BUSINESS_UNIT: ${{ secrets.CDP_BUSINESS_UNIT }}
           CDP_VIEW: ${{ secrets.CDP_VIEW }}
-          OFFICE365_EMAIL: ${{ secrets.OFFICE365_EMAIL }}
-          OFFICE365_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
+          SMTP_USERNAME: ${{ secrets.OFFICE365_EMAIL }}
+          smtp_password: ${{ secrets.OFFICE365_PASSWORD }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           RECEIVER_EMAILS: ${{ secrets.RECEIVER_EMAILS }}
         run: |
