@@ -37,5 +37,6 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          RECEIVER_EMAILS: ${{ secrets.RECEIVER_EMAILS }}
         run: |
           python auto-report/main.py
