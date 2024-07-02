@@ -5,7 +5,7 @@ on:
     - cron: "*/5 * * * *"
 
 jobs:
-  build:
+  run-report:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,6 @@ jobs:
           OFFICE365_EMAIL: ${{ secrets.OFFICE365_EMAIL }}
           OFFICE365_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
         run: |
-          source venv/bin/activate  # Adjust for Windows as needed
-          python autoreport/auto-report/main.py  # Adjust path as needed for Windows
+          python autoreport/auto-report/main.py  
 
 
