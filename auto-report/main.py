@@ -33,21 +33,32 @@ def get_crm_id_list(profiles):
     return '\t({})'.format(', '.join(filter(None, crm_ids)))
 
 # Function to send email using SMTP
-def send_email(sender_email, receiver_email, subject, body, smtp_server, smtp_port, smtp_username, smtp_password):
+
+
+def send_email(sender_email, receiver_emails, subject, body, smtp_server, smtp_port, smtp_username, smtp_password):
+    if isinstance(receiver_emails, list):
+        receiver_emails_str = ','.join(receiver_emails)
+    else:
+        receiver_emails_str = receiver_emails
+    
     message = MIMEMultipart()
     message['From'] = sender_email
-    message['To'] = receiver_email
     message['Subject'] = subject
     message.attach(MIMEText(body, 'plain'))
-    
+
     try:
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()
             server.login(smtp_username, smtp_password)
-            server.sendmail(sender_email, receiver_email, message.as_string())
-            print("Email sent successfully!")
+            for receiver_email in receiver_emails_str.split(','):
+                message['To'] = receiver_email.strip()
+                server.sendmail(sender_email, receiver_email.strip(), message.as_string())
+                print(f"Email sent successfully to {receiver_email.strip()}!")
     except Exception as e:
         print(f"Failed to send email. Error: {str(e)}")
+
+
+
 
 # Async function to query CDP
 async def cdp_query(query):
@@ -158,7 +169,8 @@ async def run_report_and_send_email():
 
     # Send email with the report data
     sender_email = os.getenv('SENDER_EMAIL')
-    receiver_email = os.getenv('RECIPIENT_EMAIL')
+    # receiver_email = os.getenv('RECIPIENT_EMAIL')
+    receiver_emails = os.getenv('RECEIVER_EMAILS').split(',')
     current_date = datetime.now().strftime('%Y-%m-%d')
     subject = f'Daily UC1 Report - {current_date}'
     smtp_server = 'smtp.office365.com'
@@ -166,7 +178,7 @@ async def run_report_and_send_email():
     smtp_username = os.getenv('SMTP_USERNAME')
     smtp_password = os.getenv('SMTP_PASSWORD')
    
-    send_email(sender_email, receiver_email, subject, report_data, smtp_server, smtp_port, smtp_username, smtp_password)
+    send_email(sender_email, receiver_emails, subject, report_data, smtp_server, smtp_port, smtp_username, smtp_password)
 
 if __name__ == '__main__':
     asyncio.run(run_report_and_send_email())
