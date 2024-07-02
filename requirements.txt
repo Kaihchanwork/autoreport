@@ -1,4 +1,4 @@
-aiohttp==3.8.2    # Example version specification for aiohttp
+aiohttp==3.9.0b0    # Example version specification for aiohttp
 asyncio==3.4.3    # Example version specification for asyncio
 requests==2.26.0  # Example version specification for requests
 python-dotenv==1.0.1
