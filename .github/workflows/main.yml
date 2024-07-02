@@ -38,6 +38,6 @@ jobs:
           subject: Daily Report
           body: |
             The daily report is ready.
-          to: recipient@example.com
-          from: sender@example.com
+          to: kai.chan@nateevo.com
+          from: kai.chan@nateevo.com
           tls: true
