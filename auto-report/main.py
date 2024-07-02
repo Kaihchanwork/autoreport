@@ -7,6 +7,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -162,7 +163,7 @@ async def run_report_and_send_email():
     smtp_port = 587
     smtp_username = os.getenv('SMTP_USERNAME')
     smtp_password = os.getenv('SMTP_PASSWORD')
-
+   
     send_email(sender_email, receiver_email, subject, report_data, smtp_server, smtp_port, smtp_username, smtp_password)
 
 if __name__ == '__main__':
