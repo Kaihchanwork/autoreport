@@ -32,7 +32,7 @@ jobs:
           OFFICE365_PASSWORD: ${{ secrets.OFFICE365_PASSWORD }}
         run: |
           source venv/bin/activate  # Adjust for Windows as needed
-          python autoreport/auto-report/main.py  # Adjust path as needed for Windowsc
+          python autoreport/auto-report/main.py  # Adjust path as needed for Windows
 
       - name: Send email
         env:
@@ -41,4 +41,3 @@ jobs:
         run: |
           source venv/bin/activate  # Adjust for Windows as needed
           python send_email.py  # Assuming you have a script to send emails
-
